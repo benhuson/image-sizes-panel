@@ -41,6 +41,10 @@ class Image_Sizes_Panel_Admin {
 				text-align: right;
 			}
 
+			#image_sizes_panel table .undefined th {
+				text-decoration: line-through;
+			}
+
 			</style>
 
 			<?php
@@ -71,14 +75,49 @@ class Image_Sizes_Panel_Admin {
 	 */
 	public static function image_sizes_meta_box( $post ) {
 
+		$defined_sizes = get_intermediate_image_sizes();
+		$image_sizes = get_intermediate_image_sizes();
 		$metadata = wp_get_attachment_metadata( $post->ID );
+		$generated_sizes = array();
 
+		// Merge defined image sizes with generated image sizes
 		if ( isset( $metadata['sizes'] ) && count( $metadata['sizes'] ) > 0 ) {
+			$generated_sizes = array_keys( $metadata['sizes'] );
+			$image_sizes = array_unique( array_merge( $image_sizes, $generated_sizes ) );
+		}
+
+		sort( $image_sizes );
+
+		if ( count( $image_sizes ) > 0 ) {
 
 			echo '<table>';
-			foreach ( $metadata['sizes'] as $size => $data ) {
+			foreach ( $image_sizes as $size ) {
+
 				$src = wp_get_attachment_image_src( $post->ID, $size );
-				echo '<tr><th><a href="' . $src[0] . '" target="images_sizes_panel">' . $size . '</a></th><td>' . $data['width'] . ' &times ' . $data['height'] . '</td></tr>';
+
+				if ( isset( $metadata['sizes'][ $size ] ) ) {
+					$width = $metadata['sizes'][ $size ]['width'];
+					$height = $metadata['sizes'][ $size ]['height'];
+				} else {
+					$width = $src[1];
+					$height = $src[2];
+				}
+
+				if ( in_array( $size, $generated_sizes ) ) {
+					$class = 'generated';
+					$format = '<a href="' . $src[0] . '" target="images_sizes_panel">%s</a>';
+				} else {
+					$class = 'not-generated';
+					$format = '%s';
+				}
+
+				$class = in_array( $size, $generated_sizes ) ? 'generated' : 'not-generated';
+				if ( ! in_array( $size, $defined_sizes ) ) {
+					$class = 'undefined';
+				}
+
+				echo '<tr class="' . $class . '"><th>' . sprintf( $format, $size ) . '</th><td>' . $width . ' &times ' . $height . '</td></tr>';
+
 			}
 			echo '</table>';
 
