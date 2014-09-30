@@ -8,9 +8,46 @@
  */
 
 // Actions
+add_action( 'admin_head', array( 'Image_Sizes_Panel_Admin', 'admin_enqueue_scripts' ) );
 add_action( 'add_meta_boxes', array( 'Image_Sizes_Panel_Admin', 'add_image_sizes_meta_box' ) );
 
 class Image_Sizes_Panel_Admin {
+
+	/**
+	 * Admin Styles
+	 */
+	public static function admin_enqueue_scripts() {
+
+		$screen = get_current_screen();
+
+		if ( 'post' == $screen->base && 'attachment' == $screen->id ) {
+
+			?>
+
+			<style>
+
+			#image_sizes_panel table {
+				width: 100%;
+			}
+
+			#image_sizes_panel table th,
+			#image_sizes_panel table td {
+				font-weight: normal;
+				text-align: left;
+				vertical-align: top;
+			}
+
+			#image_sizes_panel table td {
+				text-align: right;
+			}
+
+			</style>
+
+			<?php
+
+		}
+
+	}
 
 	/**
 	 * Add Image Sizes Meta Box
@@ -38,10 +75,10 @@ class Image_Sizes_Panel_Admin {
 
 		if ( isset( $metadata['sizes'] ) && count( $metadata['sizes'] ) > 0 ) {
 
-			echo '<table style="width: 100%;">';
+			echo '<table>';
 			foreach ( $metadata['sizes'] as $size => $data ) {
 				$src = wp_get_attachment_image_src( $post->ID, $size );
-				echo '<tr><th style="text-align: left;"><a href="' . $src[0] . '" target="images_sizes_panel">' . $size . '</a></th><td>' . $data['width'] . ' &times ' . $data['height'] . '</td></tr>';
+				echo '<tr><th><a href="' . $src[0] . '" target="images_sizes_panel">' . $size . '</a></th><td>' . $data['width'] . ' &times ' . $data['height'] . '</td></tr>';
 			}
 			echo '</table>';
 
