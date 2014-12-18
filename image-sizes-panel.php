@@ -4,7 +4,7 @@
 Plugin Name: Image Sizes Panel
 Plugin URI: https://github.com/benhuson/image-sizes-panel
 Description: Display a meta box when viewing a media item in the admin that display all generated images sizes.
-Author: Husani Oakley, Ben Huson
+Author: Ben Huson
 Author URI: https://github.com/benhuson/image-sizes-panel
 Version: 0.1
 License: GPLv2
