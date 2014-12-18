@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Image Sizes Panel
-Plugin URI: https://github.com/benhuson/image-sizes-panel
+Plugin URI: https://wordpress.org/plugins/image-sizes-panel/
 Description: Display a meta box when viewing a media item in the admin that display all generated images sizes.
 Author: Ben Huson
 Author URI: https://github.com/benhuson/image-sizes-panel
