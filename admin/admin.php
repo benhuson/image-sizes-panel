@@ -101,23 +101,23 @@ class Image_Sizes_Panel_Admin {
 					$class = 'undefined';
 				}
 
-				$message = '';
+				$messages = array();
 
 				if ( in_array( $size, array_keys( $_wp_additional_image_sizes ) ) ) {
 					$sizing = $_wp_additional_image_sizes[ $size ]['crop'] ? 'Cropped' : 'Fit';
-					$message .= sprintf( 'Image sizing: %s ', $sizing );
+					$messages[] = sprintf( 'Image sizing: %s', $sizing );
 				}
 
 				if ( ! in_array( $size, $generated_sizes ) ) {
-					$message .= 'Image file not generated. Will use next largest image size.';
+					$messages[] = 'Image file not generated. Will use next largest image size.';
 				}
 
 				if ( ! in_array( $size, $defined_sizes ) ) {
-					$message .= 'Image size no longer defined but file still exists. ';
+					$messages[] = 'Image size no longer defined but file still exists.';
 				}
 
-				if ( ! empty( $message ) ) {
-					$message = sprintf( '<div class="info-content">%s</class>', trim( $message ) );
+				if ( ! empty( $messages ) ) {
+					$message = sprintf( '<div class="info-content">%s</class>', implode( '<br />', $messages ) );
 				}
 
 				echo '<tr id="image-sizes-panel-' . sanitize_html_class( $size ) . '" class="' . $class . '">';
