@@ -2,8 +2,8 @@
 Contributors: husobj
 Tags: attachments, media, images, sizes
 Requires at least: 3.9
-Tested up to: 4.2
-Stable tag: 0.2
+Tested up to: 4.5.2
+Stable tag: 0.3
 License: GPL2
 
 Display a meta box when viewing a media item in the admin that display all generated images sizes.
@@ -33,6 +33,10 @@ The plugin is [hosted on GitHub](https://github.com/benhuson/image-sizes-panel) 
 1. Image Sizes Meta Box
 
 == Changelog =
+
+= 0.3 =
+* Make all strings translateable.
+* Add details wether images are cropped or scaled to fit.
 
 = 0.2 =
 * Move scripts and styles to external files.
