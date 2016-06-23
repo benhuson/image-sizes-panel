@@ -52,6 +52,8 @@ class Image_Sizes_Panel_Admin {
 	 */
 	public static function image_sizes_meta_box( $post ) {
 
+		global $_wp_additional_image_sizes;
+
 		$defined_sizes = get_intermediate_image_sizes();
 		$image_sizes = get_intermediate_image_sizes();
 		$metadata = wp_get_attachment_metadata( $post->ID );
@@ -100,6 +102,11 @@ class Image_Sizes_Panel_Admin {
 				}
 
 				$message = '';
+
+				if ( in_array( $size, array_keys( $_wp_additional_image_sizes ) ) ) {
+					$sizing = $_wp_additional_image_sizes[ $size ]['crop'] ? 'Cropped' : 'Fit';
+					$message .= sprintf( 'Image sizing: %s ', $sizing );
+				}
 
 				if ( ! in_array( $size, $generated_sizes ) ) {
 					$message .= 'Image file not generated. Will use next largest image size.';
