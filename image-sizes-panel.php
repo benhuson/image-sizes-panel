@@ -23,6 +23,9 @@ define( 'IMAGE_SIZES_PANEL_DIR', plugin_dir_path( __FILE__ ) );
 // Constants
 define( 'IMAGE_SIZES_PANEL_TEXTDOMAIN', 'image-sizes-panel' );
 
+// Language
+load_plugin_textdomain( 'image-sizes-panel', false, dirname( IMAGE_SIZES_PANEL_BASENAME ) . '/languages' );
+
 if ( is_admin() ) {
 	include( IMAGE_SIZES_PANEL_DIR . '/admin/admin.php' );
 }
