@@ -18,3 +18,48 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../admin/admin.php:40
+msgid "Image Sizes"
+msgstr ""
+
+#: ../admin/admin.php:74
+msgid "Info"
+msgstr ""
+
+#: ../admin/admin.php:75
+msgid "Size"
+msgstr ""
+
+#: ../admin/admin.php:76
+msgid "Dimensions"
+msgstr ""
+
+#: ../admin/admin.php:107
+msgid "Cropped"
+msgstr ""
+
+#: ../admin/admin.php:107
+msgid "Fit"
+msgstr ""
+
+#: ../admin/admin.php:108
+#, php-format
+msgid "Image sizing: %s"
+msgstr ""
+
+#: ../admin/admin.php:112
+msgid "Image file not generated. Will use next largest image size."
+msgstr ""
+
+#: ../admin/admin.php:116
+msgid "Image size no longer defined but file still exists."
+msgstr ""
+
+#: ../admin/admin.php:134
+msgid "full"
+msgstr ""
+
+#: ../admin/admin.php:142
+msgid "No image sizes"
+msgstr ""
