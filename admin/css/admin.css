@@ -29,6 +29,12 @@
 
 #image_sizes_panel table .size .name {
 	font-weight: bold;
+	display: block;
+	max-width: 135px;
+	min-width: 1px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 #image_sizes_panel table .dim {
